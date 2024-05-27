@@ -9,8 +9,6 @@ spec:
     args:
     - "--dockerfile=Dockerfile"  # Path to the Dockerfile
     - "--context=git://github.com/ajayi-george/kaniko-demo.git"  # URL to the Git repository containing the build context
-    # Alternative context URL
-    # - "--context=git://github.com/kunchalavikram1427/connected-app.git#refs/heads/master"
     - "--destination=georgeao/kaniko-demo-image:latest"  # Destination for the built image in the container registry
     volumeMounts:
     - name: kaniko-secret  # Name of the volume mount
