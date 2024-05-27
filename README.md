@@ -72,4 +72,12 @@ kubectl apply -f kaniko-pod.yaml
 kubectl get pods
 kubectl logs kaniko
 ```
+Here's the provided conclusion formatted in GitHub Markdown:
+
+
+# Conclusion
+
+With Kaniko, developers can seamlessly integrate container image building into their Kubernetes workflows without the need for Docker daemons or privileged access, making it an efficient and secure choice for CI/CD pipelines and development environments.
+
+
 
