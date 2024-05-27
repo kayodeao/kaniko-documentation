@@ -1,5 +1,5 @@
 # kaniko-documentation
-Kaniko is a tool used to build container images from a Dockerfile inside a Kubernetes cluster or any environment where a Docker daemon is not available. It does this securely and efficiently without requiring root privileges. When running Kaniko, three key arguments are commonly required:
+Kaniko is a tool used to build container images from a Dockerfile inside a Kubernetes cluster or any environment where a Docker daemon is not available. It does this securely and efficiently without requiring root privileges. 
 
 ## Prerequisites for Kaniko
 
@@ -23,7 +23,7 @@ Before using Kaniko, ensure you have the following prerequisites:
 
 For detailed setup instructions and more information, refer to the [Kaniko Documentation](https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts).
 
-
+When running Kaniko, three key arguments are commonly required:
 ### `--dockerfile`
 
 - **Description**: Specifies the path to the Dockerfile that Kaniko should use to build the image.
