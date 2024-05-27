@@ -1,23 +1,25 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kaniko
+  name: kaniko  # The name of the Pod
 spec:
   containers:
-  - name: kaniko
-    image: gcr.io/kaniko-project/executor:latest
+  - name: kaniko  # The name of the container within the Pod
+    image: gcr.io/kaniko-project/executor:latest  # The Kaniko executor image
     args:
-    - "--dockerfile=Dockerfile"
-    - "--context=git://github.com/ajayi-george/kaniko-demo.git" #git://github.com/kunchalavikram1427/connected-app.git#refs/heads/master
-    - "--destination=georgeao/kaniko-demo-image:latest"
+    - "--dockerfile=Dockerfile"  # Path to the Dockerfile
+    - "--context=git://github.com/ajayi-george/kaniko-demo.git"  # URL to the Git repository containing the build context
+    # Alternative context URL
+    # - "--context=git://github.com/kunchalavikram1427/connected-app.git#refs/heads/master"
+    - "--destination=georgeao/kaniko-demo-image:latest"  # Destination for the built image in the container registry
     volumeMounts:
-    - name: kaniko-secret
-      mountPath: /kaniko/.docker
-  restartPolicy: Never
+    - name: kaniko-secret  # Name of the volume mount
+      mountPath: /kaniko/.docker  # Mount path within the container for Docker configuration
+  restartPolicy: Never  # Policy indicating that the Pod should not restart
   volumes:
-  - name: kaniko-secret
+  - name: kaniko-secret  # Name of the volume
     secret:
-      secretName: regcred
+      secretName: regcred  # Name of the Kubernetes Secret containing Docker credentials
       items:
-        - key: .dockerconfigjson
-          path: config.json
+        - key: .dockerconfigjson  # Key in the Secret holding the Docker config
+          path: config.json  # Path where the Docker config will be mounted in the container
