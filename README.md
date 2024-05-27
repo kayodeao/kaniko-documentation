@@ -72,7 +72,7 @@ kubectl apply -f kaniko-pod.yaml
 kubectl get pods
 kubectl logs kaniko
 ```
-Here's the provided conclusion formatted in GitHub Markdown:
+
 
 
 # Conclusion
