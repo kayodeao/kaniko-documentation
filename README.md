@@ -38,3 +38,38 @@ When running Kaniko, three key arguments are commonly required:
 
 - **Description**: Indicates the destination where the built image will be pushed. This is typically a container registry.
 - **Example**: `--destination=gcr.io/project-id/image-name:tag` for Google Container Registry, or `--destination=docker.io/username/image-name:tag` for Docker Hub.
+
+# Running Kaniko in a Kubernetes Cluster to Push Images to Docker Hub
+
+## Prerequisites
+
+1. **Kubernetes Cluster**: Ensure you have a running Kubernetes cluster and `kubectl` is configured to interact with it.
+2. **Docker Hub Account**: Have a Docker Hub account and obtain your Docker Hub credentials (username and password).
+3. **Kaniko Executor Image**: Use the Kaniko executor image from Google Container Registry.
+
+## Steps
+
+### 1. Create a Kubernetes Secret for Docker Hub Credentials
+
+First, create a Kubernetes secret to store your Docker Hub credentials. Replace `<your-docker-username>` and `<your-docker-password>` with your actual Docker Hub username and password.
+
+```sh
+kubectl create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username=kunchalavikram --docker-password=<your-pword> --docker-email=<your-email>
+```
+### 2. Create a Kaniko Pod Manifest
+Create a YAML file (e.g., kaniko-pod.yaml) with the following content. This configuration will use the Kaniko executor to build the image and push it to Docker Hub:
+```sh
+nano kaniko-pod.yaml
+```
+*copy and paste the example-o1-githubcontext(public).yaml*
+
+### 3. Deploy the Kaniko Pod:
+```sh
+kubectl apply -f kaniko-pod.yaml
+```
+### 4. Monitor the Kaniko Pod:
+```sh
+kubectl get pods
+kubectl logs kaniko
+```
+
