@@ -8,7 +8,7 @@ spec:
     image: gcr.io/kaniko-project/executor:latest  # The Kaniko executor image
     args:
     - "--dockerfile=Dockerfile"  # Path to the Dockerfile
-    - "--context=git://github.com/ajayi-george/kaniko-demo.git"  # URL to the Git repository containing the build context
+    - "--context=git://github.com/kayodeao/kaniko-documentation.git"  # URL to the Git repository containing the build context
     - "--destination=georgeao/kaniko-demo-image:latest"  # Destination for the built image in the container registry
     volumeMounts:
     - name: kaniko-secret  # Name of the volume mount
